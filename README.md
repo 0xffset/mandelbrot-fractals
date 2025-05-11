@@ -1,4 +1,1 @@
 # mandelbrot-fractals
-
-
-# Hola
