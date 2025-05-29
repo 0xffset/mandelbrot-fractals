@@ -1,4 +1,4 @@
 [build]
   base = "react-app"
   command = "npm install && npm run build"
-  publish = "react-app/dist"  # Use "build" if using CRA
+  publish = "www/dist"  
