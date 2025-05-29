@@ -89,18 +89,30 @@ const App = ({ wasmModule }) => {
 
   const handleMouseDown = (e) => {
     const rect = canvasRef.current.getBoundingClientRect();
+    console.log(rect)
+    console.log("left: " + rect.left + "\n" + "right: " + rect.top)
+    console.log("pageX: " + e.pageX + "\n" + "pageY: " + e.pageY)
+    console.log("offsetX: " + e.offsetX + "\n" + "offsetY: " + e.offsetY)
+    const scaleX = params.width / rect.width;
+    const scaleY = params.height / rect.height;
+    
     setZoomStart({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top
+      x: (e.pageX - rect.x) * scaleX,
+      y: (e.pageY - rect.y) * scaleY
     });
     setMouseDown(true);
+
   };
 
   const handleMouseMove = (e) => {
     if (!mouseDown || !zoomStart) return;
     const rect = canvasRef.current.getBoundingClientRect();
-    const currentX = e.clientX - rect.left;
-    const currentY = e.clientY - rect.top;
+
+    // Convert mouse to canvas internal coordinates
+    const scaleX = params.width / rect.width;
+    const scaleY = params.height / rect.height;
+    const currentX = (e.pageX - rect.x) * scaleX;
+    const currentY = (e.pageY - rect.y) * scaleY;
     setZoomRect({
       x: zoomStart.x,
       y: zoomStart.y,
@@ -161,7 +173,7 @@ const App = ({ wasmModule }) => {
     <div className="container">
       <h1>Mandelbrot Set Z = Z^2 + c</h1>
       <div className="app-layout">
-          <Controls
+        <Controls
           params={params}
           onParamChange={handleParamChange}
           paintModes={wasmModule.PaintMode}
@@ -204,7 +216,7 @@ const App = ({ wasmModule }) => {
           </div>
         </div>
 
-      
+
       </div>
     </div>
   );
