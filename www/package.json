@@ -8,7 +8,6 @@
   },
   "scripts": {
     "build": "cd ../ && wasm-pack build --target web --out-dir ../pkg && cd ../www && npm install && npm run build",
-
     "start": "webpack-dev-server"
   },
   "repository": {
@@ -26,13 +25,12 @@
   "bugs": {
     "url": "https://github.com/rustwasm/create-wasm-app/issues"
   },
-
-   "dependencies": {
+  "dependencies": {
     "mandelbrot-wasm": "file:../pkg",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "wasm-pack": "^0.13.1"
   },
-  
   "homepage": "https://github.com/rustwasm/create-wasm-app#readme",
   "devDependencies": {
     "@babel/core": "^7.21.4",
