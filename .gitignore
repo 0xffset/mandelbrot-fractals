@@ -6,3 +6,6 @@ pkg/
 wasm-pack.log
 /www/node_modules
 /www/dist
+
+# Local Netlify folder
+.netlify
