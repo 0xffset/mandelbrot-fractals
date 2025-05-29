@@ -1,4 +1,4 @@
 [build]
-  base = "react-app"
+  base = "www"
   command = "npm install && npm run build"
   publish = "www/dist"  
